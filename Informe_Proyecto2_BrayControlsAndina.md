@@ -149,7 +149,14 @@ S -.->|"E: Acceso no autorizado"| L
 ### 5.1 Resultado del Checklist
 
 > **[DIAGRAMA / VISUALIZACIÓN DEL CHECKLIST]**
-> *La representación visual de los resultados del checklist será insertada aquí.*
+```mermaid
+pie title Cumplimiento Normativo General
+    "Cumple (0%)" : 0
+    "Parcial (50%)" : 10
+    "No cumple (50%)" : 10
+```
+
+
 | N° | Categoría | Criterio de Cumplimiento | Nivel | Evidencia / Justificación | Recomendación |
 |----|----------|--------------------------|-------|--------------------------|--------------|
 | 1 | Datos Personales | Existe política de tratamiento de datos personales | ❌ | No se evidenció política formal durante el levantamiento | Definir política de tratamiento de datos |
