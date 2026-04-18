@@ -119,7 +119,11 @@ El modelo STRIDE clasifica las amenazas de seguridad en seis categorías: **S**p
 
 > **[DIAGRAMA STRIDE]**
 ```mermaid
-flowchart LR
+pie title Cumplimiento Normativo General
+    "Cumple (0%)" : 0
+    "Parcial (50%)" : 10
+    "No cumple (50%)" : 10
+```
 
 U["Usuario / Cliente"] --> S["Dynamics 365"]
 S --> L["ERP Infor LN"]
