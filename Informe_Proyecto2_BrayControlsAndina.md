@@ -221,7 +221,77 @@ El sistema no cumple con ningún criterio de forma completa. Los 10 criterios en
 ### 7.2 Diagrama TO-BE
 
 > **[DIAGRAMA DE ARQUITECTURA TO-BE]**
-> *El diagrama de la arquitectura propuesta será insertado aquí.*
+```mermaid
+flowchart TB
+
+%% CAPA PRESENTACIÓN
+subgraph P["Capa de Presentación"]
+U["Usuarios (Ventas · Operaciones · Finanzas)"]
+D["Dashboard / Tracking en tiempo real"]
+end
+
+%% CAPA APLICACIONES
+subgraph A["Capa de Aplicaciones"]
+CRM["CRM - Dynamics 365"]
+ERP["ERP - Infor LN"]
+OMS["Order Management System"]
+AI["Motor de Planeación (IA / Forecast)"]
+INT["Middleware / API Gateway"]
+end
+
+%% CAPA DATOS
+subgraph D2["Capa de Datos"]
+DB["Base de Datos Centralizada"]
+DWH["Data Warehouse / BI"]
+end
+
+%% CAPA SEGURIDAD
+subgraph S["Seguridad"]
+IAM["Gestión de Identidad (IAM + MFA)"]
+LOG["Logs centralizados / SIEM"]
+RBAC["Control de accesos (RBAC)"]
+end
+
+%% CAPA CUMPLIMIENTO
+subgraph C["Cumplimiento"]
+GOV["Gobierno de Datos"]
+RISK["Gestión de Riesgos"]
+DLP["Protección de Datos (DLP)"]
+end
+
+%% FLUJOS
+U --> CRM
+U --> D
+
+CRM --> INT
+INT --> ERP
+ERP --> OMS
+OMS --> AI
+
+ERP --> DB
+OMS --> DB
+AI --> DB
+
+DB --> DWH
+DWH --> D
+
+%% SEGURIDAD (transversal)
+IAM --- CRM
+IAM --- ERP
+IAM --- OMS
+
+LOG --- ERP
+LOG --- OMS
+
+RBAC --- DB
+
+%% CUMPLIMIENTO (transversal)
+GOV --- DB
+RISK --- ERP
+DLP --- DB
+```
+
+
 ### 7.3 Componentes por Capa
 
 **Capa de Presentación (Interfaz interna por roles)**
