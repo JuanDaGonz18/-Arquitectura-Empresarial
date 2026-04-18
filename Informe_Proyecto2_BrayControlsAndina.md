@@ -88,6 +88,7 @@ flowchart LR
     C -.->|"Baja trazabilidad"| D
     D -.->|"Proceso manual (Excel)"| E
     F -.->|"Sin visibilidad en tiempo real"| I
+```
 
 
 ### 3.2 Debilidades y Cuellos de Botella
