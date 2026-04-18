@@ -69,20 +69,14 @@ La arquitectura actual es un sistema **híbrido no integrado**: el ERP LN centra
 flowchart LR
     A["Cliente (PO)"] --> B["Dynamics 365 - Cotización"]
     B -->|Manual| C["Infor LN - Sales Order"]
-
     C --> D["Planeación - Excel"]
-
     D --> E{"¿Hay inventario?"}
-
     E -->|Sí| F["Inventario LN - FIFO"]
     E -->|No| G["Compra (PO a proveedor)"]
-
     G --> H["Recepción Bodega"]
     H --> F
-
     F --> I["Despacho - Shipment"]
     I --> J["Factura - Financiero"]
-
     %% Problemas
     B -.->|"No integración"| C
     C -.->|"Baja trazabilidad"| D
@@ -118,14 +112,15 @@ La empresa no puede responder en tiempo real a "¿en qué estado está esta orde
 El modelo STRIDE clasifica las amenazas de seguridad en seis categorías: **S**poofing (suplantación), **T**ampering (manipulación), **R**epudiation (negación), **I**nformation Disclosure (exposición), **D**enial of Service (interrupción) y **E**levation of Privilege (escalamiento). Se aplicó sobre los componentes tecnológicos críticos del sistema de Bray Controls Andina.
 
 > **[DIAGRAMA STRIDE]**
+> *El diagrama del modelo de amenazas STRIDE aplicado al sistema será insertado aquí.*
 ```mermaid
+flowchart LR
 U["Usuario / Cliente"] --> S["Dynamics 365"]
 S --> L["ERP Infor LN"]
 L --> E["Excel Planeación"]
 E --> O["Order Track"]
 L --> W["Bodega / Inventario"]
 W --> F["Despacho"]
-
 %% STRIDE amenazas
 U -.->|"S: Suplantación de identidad"| S
 S -.->|"T: Manipulación de datos"| L
@@ -136,7 +131,6 @@ L -.->|"D: Caída del sistema afecta operación"| W
 S -.->|"E: Acceso no autorizado"| L
 ```
 
-```mermaid
 | ID | Componente | Activo Afectado | Tipo STRIDE | Descripción de la Amenaza | Impacto | Probabilidad | Nivel de Riesgo | Mitigación Recomendada |
 |----|-----------|----------------|------------|--------------------------|---------|-------------|----------------|----------------------|
 | T1 | ERP LN / Dynamics 365 | Credenciales de usuarios | Spoofing | Acceso no autorizado por robo de credenciales vía phishing o reutilización de contraseñas | Acceso a órdenes, precios y datos de clientes | Media | Alto | MFA, política de contraseñas fuertes, monitoreo de intentos de login |
@@ -155,14 +149,7 @@ S -.->|"E: Acceso no autorizado"| L
 ### 5.1 Resultado del Checklist
 
 > **[DIAGRAMA / VISUALIZACIÓN DEL CHECKLIST]**
-```mermaid
-pie title Cumplimiento Normativo General
-    "Cumple (0%)" : 0
-    "Parcial (50%)" : 10
-    "No cumple (50%)" : 10
-```
-
-
+> *La representación visual de los resultados del checklist será insertada aquí.*
 | N° | Categoría | Criterio de Cumplimiento | Nivel | Evidencia / Justificación | Recomendación |
 |----|----------|--------------------------|-------|--------------------------|--------------|
 | 1 | Datos Personales | Existe política de tratamiento de datos personales | ❌ | No se evidenció política formal durante el levantamiento | Definir política de tratamiento de datos |
@@ -224,12 +211,10 @@ El sistema no cumple con ningún criterio de forma completa. Los 10 criterios en
 ### 7.1 Idea Central
 
 > Centralizar y automatizar la gestión de órdenes e inventario de Bray Controls Andina, eliminando la dependencia de Excel mediante la integración de los sistemas existentes (LN, Dynamics 365, Order Track, Power BI), sobre una base formal de seguridad y cumplimiento normativo, logrando trazabilidad en tiempo real para todas las áreas de la organización.
-
 ### 7.2 Diagrama TO-BE
 
 > **[DIAGRAMA DE ARQUITECTURA TO-BE]**
 > *El diagrama de la arquitectura propuesta será insertado aquí.*
-
 ### 7.3 Componentes por Capa
 
 **Capa de Presentación (Interfaz interna por roles)**
@@ -287,7 +272,6 @@ Portal interno corporativo con acceso diferenciado por rol: comercial, operacion
 
 > **[DIAGRAMA DE BRECHAS NORMATIVAS]**
 > *El diagrama comparativo de cumplimiento normativo será insertado aquí.*
-
 | Normativa | Descripción | Cumplimiento Actual | Acciones Requeridas |
 |----------|------------|--------------------|--------------------|
 | Ley 1581 de 2012 – Habeas Data (Colombia) | Regula el tratamiento de datos personales de clientes, proveedores y empleados | Bajo: sin política formal, sin consentimiento explícito, sin clasificación de datos | Política de protección de datos, consentimiento informado, clasificación de activos de información |
