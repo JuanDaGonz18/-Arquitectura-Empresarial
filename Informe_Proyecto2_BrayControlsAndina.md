@@ -119,12 +119,6 @@ El modelo STRIDE clasifica las amenazas de seguridad en seis categorías: **S**p
 
 > **[DIAGRAMA STRIDE]**
 ```mermaid
-pie title Cumplimiento Normativo General
-    "Cumple (0%)" : 0
-    "Parcial (50%)" : 10
-    "No cumple (50%)" : 10
-```
-
 U["Usuario / Cliente"] --> S["Dynamics 365"]
 S --> L["ERP Infor LN"]
 L --> E["Excel Planeación"]
@@ -142,6 +136,7 @@ L -.->|"D: Caída del sistema afecta operación"| W
 S -.->|"E: Acceso no autorizado"| L
 ```
 
+```mermaid
 | ID | Componente | Activo Afectado | Tipo STRIDE | Descripción de la Amenaza | Impacto | Probabilidad | Nivel de Riesgo | Mitigación Recomendada |
 |----|-----------|----------------|------------|--------------------------|---------|-------------|----------------|----------------------|
 | T1 | ERP LN / Dynamics 365 | Credenciales de usuarios | Spoofing | Acceso no autorizado por robo de credenciales vía phishing o reutilización de contraseñas | Acceso a órdenes, precios y datos de clientes | Media | Alto | MFA, política de contraseñas fuertes, monitoreo de intentos de login |
@@ -160,7 +155,13 @@ S -.->|"E: Acceso no autorizado"| L
 ### 5.1 Resultado del Checklist
 
 > **[DIAGRAMA / VISUALIZACIÓN DEL CHECKLIST]**
-> *La representación visual de los resultados del checklist será insertada aquí.*
+```mermaid
+pie title Cumplimiento Normativo General
+    "Cumple (0%)" : 0
+    "Parcial (50%)" : 10
+    "No cumple (50%)" : 10
+```
+
 
 | N° | Categoría | Criterio de Cumplimiento | Nivel | Evidencia / Justificación | Recomendación |
 |----|----------|--------------------------|-------|--------------------------|--------------|
