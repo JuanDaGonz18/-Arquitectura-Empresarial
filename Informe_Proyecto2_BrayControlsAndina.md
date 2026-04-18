@@ -348,7 +348,29 @@ Portal interno corporativo con acceso diferenciado por rol: comercial, operacion
 ## 8. Normativas Analizadas
 
 > **[DIAGRAMA DE BRECHAS NORMATIVAS]**
-> *El diagrama comparativo de cumplimiento normativo será insertado aquí.*
+```mermaid
+flowchart LR
+
+%% AS-IS
+subgraph ASIS["Estado Actual (AS-IS)"]
+direction LR
+A1["Sin política de datos"] --> A2["Sin MFA"] --> A3["Sin logs / auditoría"] --> A4["Excel sin control"] --> A5["Sin trazabilidad"]
+end
+
+%% TO-BE
+subgraph TOBE["Estado Propuesto (TO-BE)"]
+direction LR
+B1["Política de datos + Habeas Data"] --> B2["Autenticación MFA + IAM"] --> B3["Logs centralizados (SIEM)"] --> B4["Sistema integrado (sin Excel)"] --> B5["Trazabilidad en tiempo real"]
+end
+
+%% RELACIONES (verticales entre capas)
+A1 -->|Brecha| B1
+A2 -->|Brecha| B2
+A3 -->|Brecha| B3
+A4 -->|Brecha| B4
+A5 -->|Brecha| B5
+```
+
 | Normativa | Descripción | Cumplimiento Actual | Acciones Requeridas |
 |----------|------------|--------------------|--------------------|
 | Ley 1581 de 2012 – Habeas Data (Colombia) | Regula el tratamiento de datos personales de clientes, proveedores y empleados | Bajo: sin política formal, sin consentimiento explícito, sin clasificación de datos | Política de protección de datos, consentimiento informado, clasificación de activos de información |
