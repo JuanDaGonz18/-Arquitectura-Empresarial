@@ -118,7 +118,25 @@ La empresa no puede responder en tiempo real a "¿en qué estado está esta orde
 El modelo STRIDE clasifica las amenazas de seguridad en seis categorías: **S**poofing (suplantación), **T**ampering (manipulación), **R**epudiation (negación), **I**nformation Disclosure (exposición), **D**enial of Service (interrupción) y **E**levation of Privilege (escalamiento). Se aplicó sobre los componentes tecnológicos críticos del sistema de Bray Controls Andina.
 
 > **[DIAGRAMA STRIDE]**
-> *El diagrama del modelo de amenazas STRIDE aplicado al sistema será insertado aquí.*
+```mermaid
+flowchart LR
+
+U["Usuario / Cliente"] --> S["Dynamics 365"]
+S --> L["ERP Infor LN"]
+L --> E["Excel Planeación"]
+E --> O["Order Track"]
+L --> W["Bodega / Inventario"]
+W --> F["Despacho"]
+
+%% STRIDE amenazas
+U -.->|"S: Suplantación de identidad"| S
+S -.->|"T: Manipulación de datos"| L
+E -.->|"T: Cambios no controlados"| L
+L -.->|"R: Sin trazabilidad (logs)"| O
+L -.->|"I: Exposición de datos sensibles"| E
+L -.->|"D: Caída del sistema afecta operación"| W
+S -.->|"E: Acceso no autorizado"| L
+```
 
 | ID | Componente | Activo Afectado | Tipo STRIDE | Descripción de la Amenaza | Impacto | Probabilidad | Nivel de Riesgo | Mitigación Recomendada |
 |----|-----------|----------------|------------|--------------------------|---------|-------------|----------------|----------------------|
