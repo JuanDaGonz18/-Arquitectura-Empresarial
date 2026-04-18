@@ -65,7 +65,29 @@ Metodología **FIFO** (primero en entrar, primero en salir). El ERP LN gestiona 
 La arquitectura actual es un sistema **híbrido no integrado**: el ERP LN centraliza los registros transaccionales pero múltiples herramientas externas operan en paralelo sin sincronización automática. El conocimiento operativo crítico vive en las personas, no en los sistemas.
 
 > **[DIAGRAMA AS-IS]**
-> *El diagrama de arquitectura actual será insertado aquí.*
+flowchart LR
+
+A["Cliente (PO)"] --> B["Dynamics 365 - Cotización"]
+B -->|Manual| C["Infor LN - Sales Order"]
+
+C --> D["Planeación - Excel"]
+
+D --> E{"¿Hay inventario?"}
+
+E -->|Sí| F["Inventario LN - FIFO"]
+E -->|No| G["Compra (PO a proveedor)"]
+
+G --> H["Recepción Bodega"]
+H --> F
+
+F --> I["Despacho - Shipment"]
+I --> J["Factura - Financiero"]
+
+%% Problemas
+B -.->|"No integración"| C
+C -.->|"Baja trazabilidad"| D
+D -.->|"Proceso manual (Excel)"| E
+F -.->|"Sin visibilidad en tiempo real"| I
 
 ### 3.2 Debilidades y Cuellos de Botella
 
